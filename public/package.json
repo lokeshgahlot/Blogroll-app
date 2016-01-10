@@ -1,0 +1,25 @@
+{
+  "name": "backbone-blog-roll",
+  "version": "1.0.0",
+  "description": "Learning Backbone",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lokeshgahlot/Blogroll-app.git"
+  },
+  "author": "Lokesh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lokeshgahlot/Blogroll-app/issues"
+  },
+  "homepage": "https://github.com/lokeshgahlot/Blogroll-app#readme",
+  "devDependencies": {
+    "backbone": "^1.2.3",
+    "bootstrap": "^3.3.6",
+    "jquery": "^2.1.4",
+    "underscore": "^1.8.3"
+  }
+}
