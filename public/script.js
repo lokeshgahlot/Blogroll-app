@@ -11,7 +11,9 @@
   });
 
   // Collections
-  var Blogs = Backbone.Collection.extend({});
+  var Blogs = Backbone.Collection.extend({
+    url:'http://localhost:3000/api/blogs'
+  });
 
   var blogs = new Blogs();
 
@@ -79,6 +81,17 @@
         setTimeout(function() {
           self.render();
         }, 30);
+
+        this.model.fetch({
+          succuss: function(reseponse) {
+            _.each(rseponse.toJSON(), function(item) {
+              console.log('item');
+            });
+          },
+          error: function() {
+            console.log('Failed to get blogs from server');
+          }
+        });
       });
     },
     render: function() {
