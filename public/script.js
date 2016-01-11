@@ -81,18 +81,19 @@
         setTimeout(function() {
           self.render();
         }, 30);
+      });
 
-        this.model.fetch({
-          succuss: function(reseponse) {
-            _.each(rseponse.toJSON(), function(item) {
-              console.log('item');
+      this.model.fetch({
+          success: function(response) {
+            _.each(response.toJSON(), function(item) {
+              console.log('item', item._id);
             });
           },
           error: function() {
             console.log('Failed to get blogs from server');
           }
         });
-      });
+
     },
     render: function() {
       var self = this;
@@ -118,6 +119,15 @@
         url: url.val()
       });
       blogs.add(blog);
+      blog.save(null, {
+        success: function(response) {
+          console.log('successfully save blog with id' + response.toJSON()._id);
+        },
+        error: function() {
+          console.log('Failed to save the blog!');
+        }
+      });
+
       author.val('');
       title.val('');
       url.val('');
