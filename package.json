@@ -18,5 +18,8 @@
   "homepage": "https://github.com/lokeshgahlot/Blogroll-app#readme",
   "devDependencies": {
     "express": "^4.13.3"
+  },
+  "dependencies": {
+    "body-parser": "^1.14.2"
   }
 }
