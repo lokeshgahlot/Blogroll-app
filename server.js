@@ -1,15 +1,38 @@
 var express = require('express');
+var bodyParser = require('body-parser');
+var mongoose = require('./mongoose');
 
 var app = express();
 
 app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.json());
 
-app.get('api/blogs', function(req, res) {
+var Blog = mongoose();
 
+// Routes
+app.get('/api/blogs', function(req, res) {
+
+  Blog.find(function(err, docs) {
+    if (docs) {
+      docs.forEach(function(item) {
+        console.log('Recevied a GET request');
+      });
+      res.send(docs);
+    }
+  });
 });
 
-app.post('api/blogs', function(req, res) {
-  Blog
+app.post('/api/blogs', function(req, res) {
+  console.log('Revevied a POST request blog!');
+
+  for (var key in req.body) {
+    console.log(key + ':' + req.body[key]);
+  }
+
+  var blog = new Blog(req.body);
+  blog.save(function(err, doc) {
+    res.send(doc);
+  });
 });
 
 var port = 3000;
