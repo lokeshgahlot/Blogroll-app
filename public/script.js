@@ -1,6 +1,8 @@
 ;(function() {
   'use strict';
 
+  Backbone.Model.prototype.idAttribute = '_id';
+
   // Modals
   var Blog = Backbone.Model.extend({
     defaults: {
@@ -59,7 +61,14 @@
       blogsView.render();
     },
     delete: function() {
-      this.model.destroy();
+      this.model.destroy({
+        success: function(response) {
+          console.log('Successfully DELETE blog with _id:', response.toJSON()._id);
+        },
+        error: function() {
+          console.log('Failed to delete DELETE the blog');
+        }
+      });
     },
     render: function() {
       this.$el.html(this.template(this.model.toJSON()));
