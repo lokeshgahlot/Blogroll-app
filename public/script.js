@@ -56,6 +56,15 @@
       this.model.set('author', $('.author-update').val());
       this.model.set('title', $('.title-update').val());
       this.model.set('url', $('.url-update').val());
+
+      this.model.save(null, {
+        success: function(response) {
+          console.log('Successfully update the blog with id', response.toJSON()._id);
+        },
+        error: function() {
+          console.log('Failed to update blog!');
+        }
+      });
     },
     cancel: function() {
       blogsView.render();

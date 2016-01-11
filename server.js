@@ -42,6 +42,13 @@ app.delete('/api/blogs/:id', function(req, res) {
   });
 });
 
+app.put('/api/blogs/:id', function(req, res) {
+  console.log('Recevied an UPDATE request for id', req.params.id);
+  Blog.update({_id: req.params.id}, req.body, function(err) {
+    res.send({_id: req.params.id});
+  });
+});
+
 var port = 3000;
 
 app.listen(port);
